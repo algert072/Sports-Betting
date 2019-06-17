@@ -14,10 +14,6 @@ let Game = require('./models/game');
 // store json file as a variable
 const gameData = JSON.parse(fs.readFileSync(__dirname + '/data/test-assignment.json', 'utf-8'));
  
-// add headers and parser
-
-
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,7 +35,7 @@ connection.once('open', function() {
             process.exit();
         } 
     };
-    // load data once to database
+    // LOAD JSON DATA once to database then comment out
     //loadGames()
 })
 
