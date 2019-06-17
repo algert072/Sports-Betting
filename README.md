@@ -8,12 +8,13 @@
 - Node - make sure node is installed
 
 ## Steps
-- *Step 1.*
+*Step 1.*
 -  change directory to backend 
 -  *type:* npm i
 -  change directory to frontend
 -  *type:* npm i
-- *Step 2.*
+
+*Step 2.*
 -  inside folder backend 
 -  *type:* node ./index.js
 -  inside folder frontend
