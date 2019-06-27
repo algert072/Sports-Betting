@@ -6,7 +6,8 @@ let Bet = new Schema({
         type: String
     },
     createdAt: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     group: {
         type: String
