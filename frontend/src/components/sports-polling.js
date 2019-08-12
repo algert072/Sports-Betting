@@ -12,6 +12,7 @@ export default class Polling extends Component {
     constructor(props){
         super(props);
 
+        this.getGames = this.getGames.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeResponsible = this.onChangeResponsible.bind(this);
         this.onChangeBet = this.onChangeBet.bind(this);
@@ -54,12 +55,18 @@ export default class Polling extends Component {
         });
     }
 
-    componentDidMount() {
+   componentDidMount() {
+        this.getGames()
+    }
+
+    getGames() {
         axios.get(`${this.state.URL}:${this.state.PORT}/gameBets`)
-        .then(res => { 
-            this.setState({ polls: res.data })
+        .then(res => {
+            this.setState({
+                polls: res.data
+            })
         })
-        .catch(function(err){
+        .catch((err) => {
             console.log(err);
         })
     }
@@ -92,9 +99,7 @@ export default class Polling extends Component {
             bet: this.state.bet
         })
 
-        setTimeout(() => {
-           window.location.reload();
-        }, 1000);
+        this.getGames()
     }
 
     render() {

@@ -25,7 +25,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/gameBets', {
 });
 const connection = mongoose.connection;
 
-connection.once('open', function () {
+connection.once('open', () => {
     console.log('MongoDB, database connection established successfully');
     // load json file to the database
     async function loadGames() {
@@ -43,6 +43,6 @@ connection.once('open', function () {
 })
 
 app.use('/gameBets', gameRoutes);
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)
 })

@@ -6,15 +6,15 @@ let Bet = require('../../models/bets');
 let Game = require('../../models/game');
 
 // get a random document
-gameRoutes.get('/', function (req, res) {
-    Game.countDocuments().exec(function (err, count) {
+gameRoutes.get('/', (req, res) => {
+    Game.countDocuments().exec((err, count) => {
 
         // get random number
         var random = Math.floor(Math.random() * count)
 
         // fetch one random document from database
         Game.findOne().skip(random).exec(
-            function (err, result) {
+            (err, result) => {
                 // send random document 
                 res.send(result);
             })
@@ -22,7 +22,7 @@ gameRoutes.get('/', function (req, res) {
 })
 
 // adds new model (Bet) that stores users bet to database
-gameRoutes.route('/add').post(function (req, res, next) {
+gameRoutes.route('/add').post((req, res, next) => {
     let bet = new Bet(req.body);
     console.log(req.body)
     // save  response to database
@@ -36,8 +36,8 @@ gameRoutes.route('/add').post(function (req, res, next) {
 })
 
 // change bet
-// gameRoutes.route('/update/:id', function(req, res) {
-//     Game.findById(req.params.id, function (err, game) {
+// gameRoutes.route('/update/:id', (req, res) => {
+//     Game.findById(req.params.id, (err, game) => {
 //         console.log('Game',game);
 //         if(!game) 
 //             res.status(404).send('****DATA NO FOUND****');
